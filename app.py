@@ -4,14 +4,6 @@ from flask import Flask, render_template, request
 app = Flask(__name__)
 
 config = {
-    "apiKey": "AIzaSyAInt6Z0EXxsRgA8W3QfItFpHlhqSy5jdw",
-    "authDomain": "challecara-app.firebaseapp.com",
-    "databaseURL": "https://challecara-app.firebaseio.com",
-    "projectId": "challecara-app",
-    "storageBucket": "challecara-app.appspot.com",
-    "messagingSenderId": "393001281058",
-    "appId": "1:393001281058:web:d47fd2dacfaaa7a1ae0c7b",
-    "measurementId": "G-W581ZTLB6F"
 }
 
 firebase = pyrebase.initialize_app(config)
