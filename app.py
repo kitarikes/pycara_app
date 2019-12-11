@@ -17,7 +17,7 @@ config = {
 firebase = pyrebase.initialize_app(config)
 db = firebase.database()
 auth = firebase.auth()
-
+storage = firebase.storage()
 
 @app.route("/sign_up_do", methods=["POST"])
 def sign_up_do():
@@ -25,9 +25,9 @@ def sign_up_do():
                 result = request.form
                 user = auth.create_user_with_email_and_password(result['email'], result['password'])
                 auth.send_email_verification(user['idToken'])
-                user = auth.refresh(user['refreshToken'])
-                data = {"name": result['name']}
-                db.child("users").push(data, user['idToken'])
+                auth.refresh(user['refreshToken'])
+                data = {"name": result['email'].split('@')[0]}
+                db.child("users").child(result['email'].split('@')[0]).set(data)
                 return 'finished!!'
         else:
                 render_template('login/sign_up.html')
@@ -43,14 +43,51 @@ def sign_in():
 @app.route("/sign_in_do", methods=['POST'])
 def sign_in_do():
         result = request.form
-        user = auth.sign_in_with_email_and_password(result['email'], result['password'])
-        x = auth.get_account_info(user['idToken'])
-        return x
+        auth.sign_in_with_email_and_password(result['email'], result['password'])
+        return ''
 
 
 @app.route("/")
 def home():
-        return 'HOME'
+        return ''
+
+#---画像アップロード関連---
+@app.route("/pre_upload")
+def img_up():
+        return render_template('img/pre_upload.html')
+
+@app.route("/pre_upload_do", methods=['POST'])
+def up():
+        subject = "math"
+        f = request.files["s_file"]
+        print(f)
+        storage.child("images").child(subject).child(f.filename).put(f)
+        url = storage.child("images/math/"+f.filename).get_url(token=None)
+        data = {"url":url}
+        db.child("subject_url").child("math").push(data)
+
+        return ''
+
+@app.route('/show')
+def show():
+        my_dic = db.child("subject_url").child("math").get().val()
+        a = []
+        ans = []
+        for key, value in my_dic.items():
+                a.append(key)
+                ans.append(value)
+        k =[]
+        for i in ans:
+                k.append(i['url'])
+
+
+
+        return render_template('show.html', k = k)
+#--------------------------
+
+
+
+
 
 
 
