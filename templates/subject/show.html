@@ -1,0 +1,10 @@
+<form action="/pre" method="POST">
+{%for sub_name in k%}
+<p>{{sub_name}}</p>
+{%if sub_list[sub_name] == 0%}
+<li><button type="submit" name={{sub_name}} value="1">お気に入り</button></li>
+{%else%}
+<li><button type="submit" name={{sub_name}} value="0">解除</button></li>
+{%endif%}
+{% endfor %}
+</form>

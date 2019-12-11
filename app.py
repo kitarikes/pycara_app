@@ -18,7 +18,7 @@ firebase = pyrebase.initialize_app(config)
 db = firebase.database()
 auth = firebase.auth()
 storage = firebase.storage()
-
+# login関連--------------------------------------------------
 @app.route("/sign_up_do", methods=["POST"])
 def sign_up_do():
         if request.method == "POST":
@@ -45,13 +45,36 @@ def sign_in_do():
         result = request.form
         auth.sign_in_with_email_and_password(result['email'], result['password'])
         return ''
+#------------------------------------------------------------
 
-
-@app.route("/")
-def home():
+@app.route('/mypage', methods=["GET", "POST"])
+def mypage():
+        if request.method == "GET":
+                print(1)
         return ''
 
-#---画像アップロード関連---
+
+#追加-------------------------------------------------------
+#お気に入り機能----------------------------------------------
+@app.route("/pre", methods=['GET','POST'])
+def home():
+        username = 'hogehogehoge'
+        if request.method == "GET":
+                dict = db.child('subject_url').get().val()
+                k = []
+                for key, value in dict.items():
+                        k.append(key)
+
+                sub_list = db.child('users').child(username).get().val()
+                
+                return render_template('subject/show.html', k=k, sub_list=sub_list)
+        else:
+                return request.form
+#お気に入り機能----------------------------------------------
+#-----------------------------------------------------------
+
+
+#画像アップロード関連----------------------------------------
 @app.route("/pre_upload")
 def img_up():
         return render_template('img/pre_upload.html')
@@ -83,9 +106,14 @@ def show():
 
 
         return render_template('show.html', k = k)
-#--------------------------
+#------------------------------------------------------------
 
-
+@app.route('/')
+def pre1():
+        username='hogehogehoge'
+        sub_list = db.child('users').child(username).get().val()
+        print(sub_list['English'])
+        return ''
 
 
 
