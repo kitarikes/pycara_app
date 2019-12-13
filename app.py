@@ -54,7 +54,6 @@ def mypage():
         return ''
 
 
-#追加-------------------------------------------------------
 #お気に入り機能----------------------------------------------
 @app.route("/pre", methods=['GET','POST'])
 def home():
@@ -69,9 +68,25 @@ def home():
                 
                 return render_template('subject/show.html', k=k, sub_list=sub_list)
         else:
-                return request.form
+                result = request.form
+
+#お気に入り反映-------------------------------------------------
+                a = result.to_dict().keys()
+                for i in a:
+                        sub_name = i
+                db.child('users').child(username).set({sub_name : int(result[sub_name])})
+#--------------------------------------------------------------
+
+                dict = db.child('subject_url').get().val()
+                k = []
+                for key, value in dict.items():
+                        k.append(key)
+
+                sub_list = db.child('users').child(username).get().val()
+                
+                return render_template('subject/show.html', k=k, sub_list=sub_list)
+                
 #お気に入り機能----------------------------------------------
-#-----------------------------------------------------------
 
 
 #画像アップロード関連----------------------------------------
