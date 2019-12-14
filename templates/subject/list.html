@@ -1,0 +1,16 @@
+
+{% extends "layout.html" %}
+{% block content %} 
+
+{%for sub_name in k%}
+<p><a href="/subject/{{sub_name}}">{{sub_name}}</a></p>
+<form action="/subject" method="POST">
+{%if sub_list[sub_name] == 0%}
+<li><button type="submit" name={{sub_name}} value="1">お気に入り</button></li>
+{%else%}
+<li><button type="submit" name={{sub_name}} value="0">解除</button></li>
+</form>
+{%endif%}
+{% endfor %}
+</form>
+{% endblock %}

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+</head>
+<body>
+        {%if username %}
+        <p><a href="/sign_in">ログイン</a></p>
+        <p><a href="/subject">科目リスト</a></p>       
+        {%else%}
+        <h2>{{username}}さんこんにちは！</h2>
+        <p><a href="/subject">科目リスト</a></p>
+        {%endif%}
+        {% block content %}   
+        {% endblock %}      
+</body>
+</html>
+<!--
+        '/sign_in' -> ログインページ
+        '/sign_out' -> ログアウト
+        '/subject' -> 教科リスト
+        '/subject/{{sub_name}}' ->科目ごとの画像一覧
+        '/subject/{{sub_name}}/upload' -> 画像アップロードページ
+-->
+
+

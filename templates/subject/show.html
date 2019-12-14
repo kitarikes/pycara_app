@@ -1,10 +1,5 @@
-<form action="/pre" method="POST">
-{%for sub_name in k%}
-<p>{{sub_name}}</p>
-{%if sub_list[sub_name] == 0%}
-<li><button type="submit" name={{sub_name}} value="1">お気に入り</button></li>
-{%else%}
-<li><button type="submit" name={{sub_name}} value="0">解除</button></li>
-{%endif%}
+<h2>{{sub_name}}</h2>
+{%for url in k%}
+<a href={{url}}><img src= {{url}}  width="100" height="100"/></a>
 {% endfor %}
-</form>
+<a href="/subject/{{sub_name}}/upload">画像追加</a>
