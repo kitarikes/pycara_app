@@ -26,9 +26,7 @@ python-jwt==2.0.1
 requests==2.22.0
 requests-toolbelt==0.9.1
 rsa==4.0
-selenium==3.141.0
 six==1.13.0
-urllib3==1.25.7
 Werkzeug==0.16.0
 win-inet-pton==1.1.0
 wincertstore==0.2

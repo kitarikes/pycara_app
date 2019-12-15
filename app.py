@@ -14,12 +14,14 @@ config = {
     "measurementId": "G-W581ZTLB6F"
 }
 
+"""
 #科目データ--------------------------------------------------
 data = {'math': 0 ,
         'english': 0 , 
         'history': 0 ,
         'chemistry': 0 }
 #----------------------------------------------------------
+"""
 
 firebase = pyrebase.initialize_app(config)
 db = firebase.database()
@@ -34,6 +36,10 @@ username = ''
 def sign_up_do():
         if request.method == "POST":
                 try:
+                        data = {'math': 0 ,
+                        'english': 0 , 
+                        'history': 0 ,
+                        'chemistry': 0 }
                         result = request.form
                         user = auth.create_user_with_email_and_password(result  ['email'], result['password'])
                         auth.send_email_verification(user['idToken'])
@@ -68,7 +74,10 @@ def sign_in_do():
                 #sign_in したusernameを取得
                 global username
                 username = result['email'].split('@')[0]
-                return redirect('/subject')
+                global data
+                data = db.child('users').child(username).get().val()
+                print(data)
+                return redirect('/mypage') #変更
         except:
                 return redirect('/sign_in')
 
@@ -145,9 +154,35 @@ def upload(sub_name):
                 db.child("subject_url").child(subject).push(data)
                 return redirect("/subject/"+subject)
 
+#追加-----------------------------------------------------------------
 @app.route('/')
 def home():
-        return redirect('/sign_in')
+        return render_template('home.html')
+
+
+@app.route('/mypage', methods=['GET', 'POST'])
+def mypage():
+        if username == '':
+                return redirect('/sign_in')
+        elif request.method == "GET":
+                k = data.keys()
+                sub_list = db.child('users').child(username).get().val()
+                return render_template('mypage.html', k=k, sub_list=sub_list,username = username)
+
+        else:
+                result = request.form
+                print(result)
+                a = result.to_dict().keys()
+                for i in a:
+                        sub_name = i
+                data[sub_name] = int(result[sub_name])
+                print(data)
+                db.child('users').child(username).set(data)
+                k = data.keys()
+                sub_list = db.child('users').child(username).get().val()
+                
+                return render_template('mypage.html', k=k, sub_list=sub_list, username = username)
+#-----------------------------------------------------------------------------
 
 app.run(host="localhost", debug=True)
 

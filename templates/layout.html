@@ -6,14 +6,18 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>Document</title>
 </head>
-<body>
-        {%if username %}
-        <p><a href="/sign_in">ログイン</a></p>
-        <p><a href="/subject">科目リスト</a></p>       
-        {%else%}
+<body>  
+<!--ここから共通レイアウト-->
+        {%if username %} <!--ログイン状態を条件分岐-->
         <h2>{{username}}さんこんにちは！</h2>
         <p><a href="/subject">科目リスト</a></p>
+        <p><a href="/mypage">mypage</a></p>
+        <p><a href="/sign_out">ログアウト</a></p>
+        {%else%}
+        <p><a href="/sign_in">ログイン</a></p>
+        <p><a href="/subject">科目リスト</a></p>
         {%endif%}
+<!--ここまで-->
         {% block content %}   
         {% endblock %}      
 </body>
@@ -24,6 +28,8 @@
         '/subject' -> 教科リスト
         '/subject/{{sub_name}}' ->科目ごとの画像一覧
         '/subject/{{sub_name}}/upload' -> 画像アップロードページ
+        '/mypage' -> マイページ
+        '/home' -> HOME
 -->
 
 

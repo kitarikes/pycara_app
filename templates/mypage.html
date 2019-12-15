@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<h4>mypage</h4>
+{%for sub_name in k%}
+{%if sub_list[sub_name] == 1%}
+<p><a href="/subject/{{sub_name}}">{{sub_name}}</a></p>
+<form action="/mypage" method="POST">
+<li><button type="submit" name={{sub_name}} value="0">解除</button></li>
+</form>
+{%endif%}
+{% endfor %}
+{% endblock %}
