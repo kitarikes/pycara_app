@@ -19,7 +19,7 @@ config = {
 data = {'math': 0 ,
         'english': 0 , 
         'history': 0 ,
-        'chemistry': 0 }
+        'chemistry': 0}
 #----------------------------------------------------------
 """
 
@@ -39,7 +39,7 @@ def sign_up_do():
                         data = {'math': 0 ,
                         'english': 0 , 
                         'history': 0 ,
-                        'chemistry': 0 }
+                        'chemistry': 0}
                         result = request.form
                         user = auth.create_user_with_email_and_password(result  ['email'], result['password'])
                         auth.send_email_verification(user['idToken'])
@@ -87,7 +87,7 @@ def sign_in_do():
 def sign_out():
         username = ''
         return redirect('/sign_in')
-        
+ 
 #------------------------------------------------------------
 
 #教科リストの表示とお気に入り機能--------------------------------
@@ -157,7 +157,8 @@ def upload(sub_name):
 #追加-----------------------------------------------------------------
 @app.route('/')
 def home():
-        return render_template('home.html')
+        return render_template('home.html' , username=username)
+      
 
 
 @app.route('/mypage', methods=['GET', 'POST'])
