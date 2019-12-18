@@ -1,5 +1,13 @@
 <html>
+    {% extends "layout.html" %}
+  <head>
+
+    
+  </head>
 <body>
+    {% block content %}
+  <div class="signin">
+      <div class="img_l">
     <p>{{message}}</p>
         <form action="/sign_in_do" method="POST">
         <div class=center>
@@ -7,19 +15,22 @@
           <div class="field1">
             <!--<%= f.label :email%>-->
           <p class="email">email</p>
-          <p><input type="text" name='email'></p>
+          <input type="text" name='email'>
           
         </div>
         
-          <div class="field2">
+    <div class="field2">
             <!--<%= f.label:password %>-->
-            <pclass="password">password</p>
-            <p><input type="text" name='password'></p>
+            <p class="password">password</p>
+            <input type="text" name='password'>
         
           <div class="actions1">
-                <p><input type = "submit" value = "submit" /></p>
+                <input type = "submit" value = "submit" />
           </div>
         </div>
         </form>
+      </div>
+  </div>
+  {% endblock %}
 </body>
 </html>

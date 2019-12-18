@@ -1,12 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+    {% extends "layout.html" %}
 <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        
         <title>Document</title>
 </head>
 <body>
+    {% block content %}
+    <div class="signin">
+      <div class="img_l">
   <p>{{error}}</p>
         <form action="/sign_up_do" method="POST">
         <div class="center">
@@ -21,8 +26,8 @@
             <input class="form-control" type="text" name='password'>
           </div>
           <div class="field6">
-            <p class="pass_con">password_confirmation</p>
-            <label for="passwordConfirm">パスワード（確認）:</label>
+            <p class="pass_con">Retype your <br> password</p>
+            
             <input type="password" name="passwordConfirm" id="passwordConfirm" required>
           </div>
           <div class="actions2">
@@ -30,5 +35,8 @@
           </div>
         </div>
         </form>
+        </div>
+    </div>
+    {% endblock %}
 </body>
 </html>

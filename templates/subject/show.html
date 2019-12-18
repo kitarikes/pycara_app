@@ -1,5 +1,17 @@
-<h2>{{sub_name}}</h2>
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="color">
+        <script src="/static/js/sub_color.js"></script>
+<h1 class="sub">{{sub_name}}</h1>
+<a id="fab" href="/subject/{{sub_name}}/upload">
+    <i class="fas fa-plus-circle my-big"></i>
+    </a>
+<div class="pic">
 {%for url in k%}
-<a href={{url}}><img src= {{url}}  width="100" height="100"/></a>
+<a href={{url}}><img class="smn"src= {{url}}  width="100" height="100"/></a>
 {% endfor %}
-<a href="/subject/{{sub_name}}/upload">画像追加</a>
+</div>
+
+{% endblock %}
+</div>

@@ -1,16 +1,27 @@
+<div class="back">
+    <div class="img">
+        <main>
+        {% extends "layout.html" %}
+        {% block content %} 
+        <h1 class="my">Subject List</h1>
+        {%for sub_name in k%}
+        <div class="subject">
+            <a href="/subject/{{sub_name}}"></a>
+            <div class="para">
+                <p>{{sub_name}}</p>
+                <form action="/subject" method="POST">
+                {%if sub_list[sub_name] == 0%}
+                <button  class="favorite" type="submit" name={{sub_name}} value="1">❤︎</button>
+                {%else%}
+                <button  class="none" type="submit" name={{sub_name}} value="0">❤︎</button>
+                </form>
+                {%endif%}
+            </div>
+        </div>
+        {% endfor %}
+        </form>
 
-{% extends "layout.html" %}
-{% block content %} 
-
-{%for sub_name in k%}
-<p><a href="/subject/{{sub_name}}">{{sub_name}}</a></p>
-<form action="/subject" method="POST">
-{%if sub_list[sub_name] == 0%}
-<li><button type="submit" name={{sub_name}} value="1">お気に入り</button></li>
-{%else%}
-<li><button type="submit" name={{sub_name}} value="0">解除</button></li>
-</form>
-{%endif%}
-{% endfor %}
-</form>
-{% endblock %}
+        {% endblock %}
+        </main>
+    </div>
+</div>

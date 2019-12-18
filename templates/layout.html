@@ -3,20 +3,53 @@
 <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="/static/js/jquery-3.4.1.min.js"></script>
+        <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/layout.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/sidebar.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/subject.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/show.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/upload.css') }}">
+        <link href="https://fonts.googleapis.com/css?family=Comfortaa:600|M+PLUS+Rounded+1c&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Quicksand&display=swap" rel="stylesheet">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>Document</title>
 </head>
 <body>  
-<!--ここから共通レイアウト-->
+<!--ここから共通レイアウト →　header,sidebar実装-->
+<!-- <h2>{{username}}さんこんにちは！</h2> -->
+
+<header>
+                <a href="/"><img src="/static/images/logo1.png" ></a>
+</header>
+<div class="menu-trigger" href="">
+        <span></span>
+        <span></span>
+        <span></span>
+</div>
+        <nav>
+        
+        <a href="/"><img class="logo2" src="/static/images/logo2.png" ></a><br><br>
+        <div class="list">
         {%if username %} <!--ログイン状態を条件分岐-->
-        <h2>{{username}}さんこんにちは！</h2>
-        <p><a href="/subject">科目リスト</a></p>
-        <p><a href="/mypage">mypage</a></p>
-        <p><a href="/sign_out">ログアウト</a></p>
+        <h2 id="user">{{username}}</h2>
+        
+        <a href="/subject">科目リスト</a><br><br>
+        <a href="/mypage">mypage</a><br><br>
+        <a href="/sign_out">ログアウト</a><br><br>
+        <a href="/">home</a><br><br>
         {%else%}
-        <p><a href="/sign_in">ログイン</a></p>
-        <p><a href="/subject">科目リスト</a></p>
+        
+        <a href="/sign_in">ログイン</a><br><br>
+        <a href="/subject">科目リスト</a><br><br>
+        <a href="/">home</a><br><br>
         {%endif%}
+        </div>
+        </nav>
+<div class="overlay"></div>
+<script src="/static/js/sidebar.js"></script>
 <!--ここまで-->
         {% block content %}   
         {% endblock %}      
