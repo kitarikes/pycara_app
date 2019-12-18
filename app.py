@@ -76,7 +76,6 @@ def sign_in_do():
                 username = result['email'].split('@')[0]
                 global data
                 data = db.child('users').child(username).get().val()
-                print(data)
                 return redirect('/mypage') #変更
         except:
                 return redirect('/sign_in')
@@ -173,16 +172,14 @@ def mypage():
 
         else:
                 result = request.form
-                print(result)
                 a = result.to_dict().keys()
                 for i in a:
                         sub_name = i
                 data[sub_name] = int(result[sub_name])
-                print(data)
                 db.child('users').child(username).set(data)
                 k = data.keys()
                 sub_list = db.child('users').child(username).get().val()
-                
+
                 return render_template('mypage.html', k=k, sub_list=sub_list, username = username)
 #-----------------------------------------------------------------------------
 
