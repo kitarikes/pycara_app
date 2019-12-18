@@ -1,0 +1,79 @@
+.subject {
+    position: relative;
+    width: 200px;
+    height: 200px; 
+    background-color: pink;
+    border-radius: 50%;/* ←円を作る */
+    text-align: center;
+    background:url('/static/images/img_watercolor-300x200.png') 0 0 no-repeat padding-box,
+    /*linear-gradient(349deg, #ffe300, #ff7e00, #f04100, #d100ff, #3300ff);*/
+    linear-gradient(to top left,rgb(30, 169, 255), rgb(0, 255, 217));
+    background-size: 200px 200px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-origin: padding-box;
+    background-blend-mode: hard-light;
+    border: solid 1px rgb(0, 255, 255);
+        display: inline-block;
+        width: 200px;
+       margin:50px;
+       z-index: 1;
+}
+
+.subject a{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    text-indent:-999px;
+    z-index: 2;
+}
+
+.favorite{
+    display: inline-block;
+    text-decoration: none;
+    background: none;/*ボタン色*/
+    color: rgb(147, 147, 147);
+    font-size: 30px;
+    border: none;
+    outline:none;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    cursor: hand;
+    position: relative;
+    
+    
+    z-index: 10;
+}
+
+.none{
+    display: inline-block;
+    text-decoration: none;
+    background: none;/*ボタン色*/
+    color: rgb(255, 2, 124);
+    font-size: 30px;
+    border: none;
+    outline:none;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    cursor: hand;
+    position: relative;
+    
+    z-index: 10;
+}
+
+.para{
+    position: relative;
+    top: 30%;
+}
+
+.my{
+    font-size: 50px;
+    position: relative;
+    left: 20px;
+    top: 20px;
+    color: rgb(186, 189, 127);
+}

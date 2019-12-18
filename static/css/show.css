@@ -1,0 +1,64 @@
+.color{
+    position: absolute;
+    height: 3000px;
+    width: 100%;
+}
+
+.sub{
+    position: absolute;
+    top: 70px;
+    left: 50%;
+    width: 200px;
+    height: 40px;
+    margin: 0px 0px 0px -100px; /* 幅と高さの半分のネガティブマージン */
+    font-size: 50px;
+    color: white;
+}
+
+
+.pic{
+    position: absolute;
+    height: 55%;
+    width: 80%;
+    margin: 20% 10% 0 10%;
+    overflow-y: scroll;
+}
+.pic > a{
+    padding: 20px;
+    height: 120px;
+    width: 120px;
+}
+    
+a > .smn{
+    height: 120px;
+    width: 120px;
+}
+
+#fab {/*円の部分*/
+    display: block;
+    width: 56px;/*幅*/
+    height: 56px;/*高さ*/
+    background: #03a9f4;/*背景色*/
+    text-align: center;/*中央寄せ*/
+    border-radius: 50%;/*角丸く*/
+    transition: .3s;/*滑らかな動きに*/
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,.12), 0 2px 2px 0 rgba(0,0,0,.24);/*影*/
+    display: block;
+    margin: 10% 0 0 85%;
+    position:fixed;
+}
+
+#fab:hover {/*ホバー時*/
+  box-shadow: 0 4px 5px 0 rgba(0,0,0,.14), 0 1px 10px 0 rgba(0,0,0,.12), 0 2px 4px -1px rgba(0,0,0,.2);
+}
+
+#fab i {/*中央のアイコン*/
+  color: white;
+  line-height: 56px;/*＝幅と高さ*/
+  
+}
+
+.my-big {
+    font-size: 56px; 
+    /*6倍の大きさに*/}
+
