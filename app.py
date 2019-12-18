@@ -85,6 +85,7 @@ def sign_in_do():
 #ログアウト
 @app.route("/sign_out")
 def sign_out():
+        global username
         username = ''
         return redirect('/sign_in')
  
@@ -158,7 +159,7 @@ def upload(sub_name):
 @app.route('/')
 def home():
         return render_template('home.html' , username=username)
-      
+
 
 
 @app.route('/mypage', methods=['GET', 'POST'])
