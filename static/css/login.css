@@ -201,3 +201,7 @@ p.password{
     font-size: 100%;
     z-index: 10;
 }
+
+h1{
+    color: rgb(120, 121, 59);
+}
