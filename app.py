@@ -137,13 +137,13 @@ def subject_detail(sub_name):
                 pass
 
 
-        return render_template('subject/show.html', k = k, sub_name=sub_name)       
+        return render_template('subject/show.html', k = k, sub_name=sub_name, username=username)       
 
 #教科ごとの画像upload form
 @app.route('/subject/<sub_name>/upload', methods=['GET', 'POST'])
 def upload(sub_name):
         if request.method == "GET":
-                return render_template('subject/upload.html',   sub_name=sub_name)
+                return render_template('subject/upload.html',   sub_name=sub_name, username=username)
 
         else:
                 subject = sub_name
