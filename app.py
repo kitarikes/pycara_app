@@ -114,7 +114,7 @@ def sub_home():
 
                 k = data.keys()
                 sub_list = db.child('users').child(username).get().val()
-                
+
                 return render_template('subject/list.html', k=k, sub_list=sub_list, username = username)
                 
 #お気に入り機能-------------------------------------------------
@@ -183,5 +183,8 @@ def mypage():
                 return render_template('mypage.html', k=k, sub_list=sub_list, username = username)
 #-----------------------------------------------------------------------------
 
-app.run(host="localhost", debug=True)
+#app.run(host="localhost", debug=True)
 
+if __name__ == '__main__':
+    #処理の実行
+    app.run(debug=True)
