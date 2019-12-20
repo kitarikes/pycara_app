@@ -21,8 +21,8 @@
 
 .img_pic{
     position: relative;
-    height: 300px;
-    width: 600px;
+    height: 430px;
+    width: 700px;
  }
  .img_pic img {
     position: absolute;
@@ -40,6 +40,6 @@
  }
 
  .img_pic > img{
-    height: 390px;
+    height: 430px;
     width: 700px;
  }

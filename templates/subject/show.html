@@ -3,14 +3,25 @@
 {% block content %}
 <div class="color">
         <script src="/static/js/sub_color.js"></script>
+        
 <h1 class="sub">{{sub_name}}</h1>
-<a id="fab" href="/subject/{{sub_name}}/upload">
+<div class="jQueryPush" id="fab" href="#">
     <i class="fas fa-plus-circle my-big"></i>
-    </a>
+</div>
 <div class="pic">
-{%for url in k%}
-<a href={{url}}><img class="smn"src= {{url}}  width="100" height="100"/></a>
-{% endfor %}
+    {%for url in k%}
+    <a href={{url}}><img class="smn"src= {{url}}  width="100" height="100"/></a>
+    {% endfor %}
+
+    <div id="jQueryBox">
+            
+        <form action="/subject/{{sub_name}}/upload" method="POST" enctype="multipart/form-data">
+                <p>アップロードするファイルを選択して下さい。</p>
+                <p class="subm1"><input type="file" name="s_file"></p>
+                <p class="subm2"><input type = "submit" value = "submit" /></p>
+        </form>
+    </div>
+    <script src="/static/js/popup.js"></script>
 </div>
 
 {% endblock %}
