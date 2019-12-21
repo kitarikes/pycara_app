@@ -144,6 +144,7 @@ def subject_detail(sub_name):
     return render_template('subject/show.html', k=k, sub_name=sub_name, username=username)
 
 
+
 # 教科ごとの画像upload form
 @app.route('/subject/<sub_name>/upload', methods=['GET', 'POST'])
 def upload(sub_name):
